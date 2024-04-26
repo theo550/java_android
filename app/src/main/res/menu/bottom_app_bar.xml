@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Home"
+        android:contentDescription="home"/>
+
+    <item
+        android:id="@+id/authors"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Authors"
+        android:contentDescription="authors"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="User"
+        android:icon="@drawable/ic_launcher_background"
+        android:contentDescription="profile"/>
+</menu>
