@@ -8,6 +8,7 @@ import com.example.gaudinth_library.persistence.repositories.BookRepository;
 import java.util.LinkedList;
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 public class BookViewModel extends ViewModel {
@@ -25,7 +26,7 @@ public class BookViewModel extends ViewModel {
         });
     }
 
-    public void insertBook(Book book) { bookRepository.insertBook(book);}
+    public Completable insertBook(Book book) { return bookRepository.insertBook(book);}
 
     public Flowable<List<Book>> loadUserBooks(long id) {
         return bookRepository.getAllUserBooks(id).map(bookList->{

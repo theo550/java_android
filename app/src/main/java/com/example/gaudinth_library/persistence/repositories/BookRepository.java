@@ -8,6 +8,7 @@ import com.example.gaudinth_library.persistence.dao.BookDao;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 public class BookRepository {
@@ -18,8 +19,8 @@ public class BookRepository {
         bookDao = db.bookDao();
     }
 
-    public void insertBook(Book book) {
-        bookDao.insertBook(book);
+    public Completable insertBook(Book book) {
+        return bookDao.insertBook(book);
     }
     public void updateBook(Book book) {
         bookDao.updateBook(book);

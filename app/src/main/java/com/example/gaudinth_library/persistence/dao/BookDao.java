@@ -11,12 +11,13 @@ import com.example.gaudinth_library.classes.Book;
 
 import java.util.List;
 
+import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
 @Dao
 public interface BookDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    public void insertBook(Book book);
+    public Completable insertBook(Book book);
 
     @Update
     public void updateBook(Book book);

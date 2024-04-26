@@ -31,10 +31,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import io.reactivex.CompletableObserver;
 import io.reactivex.Flowable;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class AddNewBookFragment extends BottomSheetDialogFragment {
     public MainBookActivity activity;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
     public BookViewModel bookViewModel;
 
     public void setAddBookListener() {
@@ -85,7 +90,24 @@ public class AddNewBookFragment extends BottomSheetDialogFragment {
                     }
                 });
 
-                bookViewModel.insertBook(new Book(activity.currentUser.uid, title, selectedAuthor[0]));
+                bookViewModel.insertBook(new Book(activity.currentUser.uid, title, selectedAuthor[0]))
+                        .subscribeOn(Schedulers.io())
+                        .subscribe(new CompletableObserver() {
+                            @Override
+                            public void onSubscribe(Disposable d) {
+
+                            }
+
+                            @Override
+                            public void onComplete() {
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+                        });
 
                 dismiss();
             }
